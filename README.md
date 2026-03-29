@@ -1,4 +1,5 @@
-# Expo Plate 🍽️
+<img width="203" height="199" alt="Vector" src="https://github.com/user-attachments/assets/692d9d52-58eb-4e09-8c40-6da9b6bfea58" />
+
 
 # Start with one command or clone repos 
 
