@@ -1,8 +1,14 @@
 import { Ionicons } from '@expo/vector-icons';
 import { Redirect, Tabs } from 'expo-router';
+import {
+  Icon,
+  Label,
+  NativeTabs,
+  VectorIcon,
+} from 'expo-router/unstable-native-tabs';
 import { useThemeColor, useToast } from 'heroui-native';
-import { useCallback, useEffect } from 'react';
-import { ActivityIndicator, Image, Platform, StyleSheet, View } from 'react-native';
+import { useEffect, useState } from 'react';
+import { ActivityIndicator, Image, StyleSheet, View } from 'react-native';
 import { useReducedMotion } from 'react-native-reanimated';
 import { useAuth } from '@clerk/clerk-expo';
 import LogoDark from '../../../assets/logo-dark.png';
@@ -12,6 +18,9 @@ import { useAppTheme } from '../../contexts/app-theme-context';
 export default function Layout() {
   const { isDark } = useAppTheme();
   const { isSignedIn, isLoaded } = useAuth();
+
+  // false for basic tabs, true for native tabs
+  const [showNativeTabs] = useState(true);
 
   const [themeColorForeground, themeColorBackground] = useThemeColor([
     'foreground',
@@ -54,6 +63,29 @@ export default function Layout() {
     );
   };
 
+  if (showNativeTabs) {
+    return (
+      <View className="flex-1 bg-background">
+        <NativeTabs
+          backgroundColor={themeColorBackground}
+          iconColor={{
+            default: themeColorForeground,
+            selected: themeColorForeground,
+          }}
+        >
+          <NativeTabs.Trigger name="home/index">
+            <Label>Home</Label>
+            <Icon src={<VectorIcon family={Ionicons} name="home" />} />
+          </NativeTabs.Trigger>
+          <NativeTabs.Trigger name="user_profile/index">
+            <Label>Settings</Label>
+            <Icon src={<VectorIcon family={Ionicons} name="person" />} />
+          </NativeTabs.Trigger>
+        </NativeTabs>
+      </View>
+    );
+  }
+
   return (
     <View className="flex-1 bg-background">
       <Tabs
@@ -90,9 +122,6 @@ export default function Layout() {
             ),
           }}
         />
-
-
-
       </Tabs>
     </View>
   );

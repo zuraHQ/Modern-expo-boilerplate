@@ -1,6 +1,6 @@
-import { View, Pressable, Image } from 'react-native';
-import { Card, Divider, Switch } from 'heroui-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { View, Pressable } from 'react-native';
+import { Card, Chip, LinkButton, Switch } from 'heroui-native';
+import * as WebBrowser from 'expo-web-browser';
 import Feather from '@expo/vector-icons/Feather';
 import { Ionicons } from '@expo/vector-icons';
 import Animated, { ZoomIn } from 'react-native-reanimated';
@@ -8,11 +8,13 @@ import { AppText } from '../../../components/app-text';
 import { useAppTheme } from '../../../contexts/app-theme-context';
 import { withUniwind } from 'uniwind';
 import { Stack, useRouter } from 'expo-router';
-import { useAuth, useUser } from '@clerk/clerk-expo';
+import { useAuth } from '@clerk/clerk-expo';
 import { DevTools } from '@/src/components/dev-tools';
 import { ScreenScrollView } from '@/src/components/screen-scroll-view';
 
 const StyledIonicons = withUniwind(Ionicons);
+
+const HEROUI_COMPONENTS_DOCS_URL = 'https://heroui.com/docs/native/components';
 
 const SETTINGS_OPTIONS = [
     {
@@ -36,7 +38,6 @@ const SETTINGS_OPTIONS = [
 export default function SettingsScreen() {
     const { toggleTheme, isDark } = useAppTheme();
     const { signOut } = useAuth();
-    const { user } = useUser();
     const router = useRouter();
 
     const handleSignOut = async () => {
@@ -95,6 +96,35 @@ export default function SettingsScreen() {
                             </Switch.EndContent>
                         </Switch>
                     </View>
+                </Card>
+
+                <Card className="gap-2 border border-border/50 p-4">
+                    <View className="flex-row flex-wrap items-center gap-2">
+                        <AppText className="text-sm text-foreground/70">
+                            Documentation
+                        </AppText>
+                        <Chip
+                            size="sm"
+                            variant="soft"
+                            color="accent"
+                            disabled
+                            className="px-2 py-0.5"
+                        >
+                            Link
+                        </Chip>
+                    </View>
+                    <LinkButton
+                        accessibilityRole="link"
+                        accessibilityLabel="Open HeroUI Native components documentation"
+                        className="self-start"
+                        onPress={() =>
+                            void WebBrowser.openBrowserAsync(
+                                HEROUI_COMPONENTS_DOCS_URL
+                            )
+                        }
+                    >
+                        <LinkButton.Label>HeroUI components</LinkButton.Label>
+                    </LinkButton>
                 </Card>
 
                 {SETTINGS_OPTIONS.map((item, index) => (

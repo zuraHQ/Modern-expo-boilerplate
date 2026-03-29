@@ -1,6 +1,6 @@
-import { useHeaderHeight } from '@react-navigation/elements';
+import { HeaderHeightContext } from '@react-navigation/elements';
 import { cn } from 'heroui-native';
-import { type FC, type PropsWithChildren } from 'react';
+import { type FC, type PropsWithChildren, useContext } from 'react';
 import { type ScrollViewProps } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-controller';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -17,7 +17,9 @@ export const ScreenScrollView: FC<PropsWithChildren<Props>> = ({
   ...props
 }) => {
   const insets = useSafeAreaInsets();
-  const headerHeight = useHeaderHeight();
+  // Native tabs (expo-router/unstable-native-tabs) do not provide HeaderHeightContext.
+  const headerHeight = useContext(HeaderHeightContext);
+  const paddingTop = headerHeight ?? insets.top;
   return (
     <KeyboardAwareScrollView
       bottomOffset={50}
@@ -25,7 +27,7 @@ export const ScreenScrollView: FC<PropsWithChildren<Props>> = ({
       className={cn('bg-background', className)}
       contentContainerClassName={cn('px-5', contentContainerClassName)}
       contentContainerStyle={{
-        paddingTop: headerHeight,
+        paddingTop,
         paddingBottom: insets.bottom + 32,
       }}
       showsVerticalScrollIndicator={false}
