@@ -97,6 +97,10 @@ expo-plate/
 └── ...
 ```
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/image?repos=zuraHQ/Modern-expo-boilerplate&type=date&legend=top-left)](https://www.star-history.com/?repos=zuraHQ%2FModern-expo-boilerplate&type=date&legend=top-left)
+
 
 ## Star History
 
