@@ -99,9 +99,6 @@ expo-plate/
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/image?repos=zuraHQ/Modern-expo-boilerplate&type=date&legend=top-left)](https://www.star-history.com/?repos=zuraHQ%2FModern-expo-boilerplate&type=date&legend=top-left)
+<img width="1832" height="1404" alt="star-history-2026330" src="https://github.com/user-attachments/assets/c500e6ff-8fb1-4a4e-9f6e-4b64c50eae26" />
 
 
-## Star History
-
-<iframe style="width:100%;height:auto;min-width:600px;min-height:400px;" src="https://www.star-history.com/?repos=zuraHQ%2FModern-expo-boilerplate&type=date&legend=top-left" frameBorder="0"></iframe>
