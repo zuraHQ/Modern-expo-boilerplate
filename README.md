@@ -16,6 +16,8 @@
 
 ## ⚠️ Important Notes
 
+- Some packages will require dev build, you cant run it in expo go, please read **Run the app** section to properly run it
+
 - If your app crashes in production, it may be due to missing environment variables in the EAS dashboard. Either hardcode the ENVs or load them from EAS.  
 
 - Don't forget to change `"package": "change.pkg.name"` in `app.json` before pushing the initial app version.  
