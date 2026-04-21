@@ -2,6 +2,7 @@
 
 # Start with one command or clone repos 
 
+CLI needs update, have not updated yet, recommended to just clone repo
     npx create-expo-plate my app
 
 - **Expo Base** – Includes:
