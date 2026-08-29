@@ -1,3 +1,5 @@
+this repo is running on expo 55, needs update
+
 <img width="857" height="254" alt="Group 22 (1)" src="https://github.com/user-attachments/assets/fc7bda15-6e40-43f9-a58e-d5504e46a3d8" />
 
 # Start with one command or clone repos 
